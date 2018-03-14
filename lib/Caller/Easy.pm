@@ -10,7 +10,7 @@ our $VERSION = "0.01";
 
 use Moose;
 
-has 'depth'         => ( is => 'rw', isa => 'Maybe[Num]' );
+has 'depth'         => ( is => 'ro', isa => 'Maybe[Num]' );
 has 'package'       => ( is => 'rw', isa => 'Str' );
 has 'filename'      => ( is => 'rw', isa => 'Str' );
 has 'line'          => ( is => 'rw', isa => 'Num' );
@@ -56,13 +56,11 @@ sub BUILD {
             ( $package, $filename, $line ) = CORE::caller($i++);
         } while( $package =~ /^Test::/ or $package =~ /^Caller::Easy/ );
 
-        do {
-            (
-                undef, undef, undef,
-                $subroutine, $hasargs, $wantarray, $evaltext,
-                $is_require, $hints, $bitmask, $hinthash
-            ) = CORE::caller( $i++ + $depth );
-        } while( $package =~ /^Test::/ or $subroutine =~ /^Caller::Easy/ );
+        (
+            undef, undef, undef,
+            $subroutine, $hasargs, $wantarray, $evaltext,
+            $is_require, $hints, $bitmask, $hinthash
+        ) = CORE::caller( $i++ + $depth );
     }else{
         my $i = 1;
         do {
