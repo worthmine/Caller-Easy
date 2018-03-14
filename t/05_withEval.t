@@ -41,7 +41,7 @@ eval q|
         my $caller = ecaller($i);
          is $caller->package(), __PACKAGE__,                            # 1
         'succeed to get package name';
-         is $caller->filename(), '(eval 200)',                          # 2
+         like $caller->filename(), qr/^\(eval \d{3}\)$/,                # 2
         'succeed to get filename';
         is $caller->line(), __LINE__ - 5, 'succeed to get line number'; # 3
 

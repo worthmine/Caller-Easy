@@ -11,17 +11,17 @@ our $VERSION = "0.01";
 use Moose;
 
 has 'depth'         => ( is => 'ro', isa => 'Maybe[Num]' );
-has 'package'       => ( is => 'rw', isa => 'Str' );
-has 'filename'      => ( is => 'rw', isa => 'Str' );
-has 'line'          => ( is => 'rw', isa => 'Num' );
-has 'subroutine'    => ( is => 'rw', isa => 'Str' );
-has 'hasargs'       => ( is => 'rw', isa => 'Bool' );
-has 'wantarray'     => ( is => 'rw', isa => 'Bool' );
-has 'evaltext'      => ( is => 'rw', isa => 'Str' );
-has 'is_require'    => ( is => 'rw', isa => 'Bool' );
-has 'hints'         => ( is => 'rw', isa => 'Num' );
-has 'bitmask'       => ( is => 'rw', isa => 'Str' );
-has 'hinthash'      => ( is => 'rw', isa => 'Maybe[HashRef]' );
+has 'package'       => ( is => 'ro', writer => '_set_package', isa => 'Str' );
+has 'filename'      => ( is => 'ro', writer => '_set_filename', isa => 'Str' );
+has 'line'          => ( is => 'ro', writer => '_set_line', isa => 'Num' );
+has 'subroutine'    => ( is => 'ro', writer => '_set_subroutine', isa => 'Str' );
+has 'hasargs'       => ( is => 'ro', writer => '_set_hasargs', isa => 'Bool' );
+has 'wantarray'     => ( is => 'ro', writer => '_set_wantarray', isa => 'Bool' );
+has 'evaltext'      => ( is => 'ro', writer => '_set_evaltext', isa => 'Str' );
+has 'is_require'    => ( is => 'ro', writer => '_set_is_require', isa => 'Bool' );
+has 'hints'         => ( is => 'ro', writer => '_set_hints', isa => 'Num' );
+has 'bitmask'       => ( is => 'ro', writer => '_set_bitmask', isa => 'Str' );
+has 'hinthash'      => ( is => 'ro', writer => '_set_hinthash', isa => 'Maybe[HashRef]' );
 
 around BUILDARGS => sub {
     my $orig  = shift;
@@ -69,17 +69,17 @@ sub BUILD {
     }
 
 
-    $self->package($package)        if $package;
-    $self->filename($filename)      if $filename;
-    $self->line($line)              if $line;
-    $self->subroutine($subroutine)  if $subroutine;
-    $self->hasargs($hasargs)        if defined $hasargs;
-    $self->wantarray($wantarray)    if defined $wantarray;
-    $self->evaltext($evaltext)      if $evaltext;
-    $self->is_require($is_require)  if defined $is_require;
-    $self->hints($hints)            if $hints;
-    $self->bitmask($bitmask)        if $bitmask;
-    $self->hinthash($hinthash)      if $hinthash;
+    $self->_set_package($package)        if $package;
+    $self->_set_filename($filename)      if $filename;
+    $self->_set_line($line)              if $line;
+    $self->_set_subroutine($subroutine)  if $subroutine;
+    $self->_set_hasargs($hasargs)        if defined $hasargs;
+    $self->_set_wantarray($wantarray)    if defined $wantarray;
+    $self->_set_evaltext($evaltext)      if $evaltext;
+    $self->_set_is_require($is_require)  if defined $is_require;
+    $self->_set_hints($hints)            if $hints;
+    $self->_set_bitmask($bitmask)        if $bitmask;
+    $self->_set_hinthash($hinthash)      if $hinthash;
 
     return $self unless wantarray;
     return (
