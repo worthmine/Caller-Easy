@@ -27,12 +27,14 @@ around BUILDARGS => sub {
     my $orig  = shift;
     my $class = shift;
 
-    if ( @_ == 1 ) {
+    if( @_ == 1 ) {
         return $class->$orig( depth => $_[0] ) if $_[0] =~ /^\d+$/;
         croak 'Unvalid depth was assigned';
     }elsif( @_ > 2 ) {
-        croak 'too many arguments!';
-    } else {
+        croak 'Too many arguments!';
+    }elsif( @_ == 2 and not exists $_{depth} ) {
+        croak 'Unvalid arguments!';
+    }else{
         return $class->$orig(@_);
     }
 };
@@ -48,9 +50,10 @@ sub BUILD {
         $is_require, $hints, $bitmask, $hinthash
     );
 
-    if ( defined $depth and $depth =~ /^\d+$/ ) {
+    if( defined $depth and $depth =~ /^\d+$/ ) {
+        my $i = 1;
         do {
-            ( $package, $filename, $line ) = CORE::caller(++$depth);
+            ( $package, $filename, $line ) = CORE::caller($i++);
         } while( $package =~ /^Test::/ or $package =~ /^Caller::Easy/ );
 
         do {
@@ -58,9 +61,9 @@ sub BUILD {
                 undef, undef, undef,
                 $subroutine, $hasargs, $wantarray, $evaltext,
                 $is_require, $hints, $bitmask, $hinthash
-            ) = CORE::caller(++$depth);
+            ) = CORE::caller( $i++ + $depth );
         } while( $package =~ /^Test::/ or $subroutine =~ /^Caller::Easy/ );
-    } else {
+    }else{
         my $i = 1;
         do {
             ( $package, $filename, $line ) = CORE::caller($i++);
@@ -72,14 +75,20 @@ sub BUILD {
     $self->filename($filename)      if $filename;
     $self->line($line)              if $line;
     $self->subroutine($subroutine)  if $subroutine;
-    $self->hasargs($hasargs)        if $hasargs;
-    $self->wantarray($wantarray)    if $wantarray;
+    $self->hasargs($hasargs)        if defined $hasargs;
+    $self->wantarray($wantarray)    if defined $wantarray;
     $self->evaltext($evaltext)      if $evaltext;
-    $self->is_require($is_require)  if $is_require;
+    $self->is_require($is_require)  if defined $is_require;
     $self->hints($hints)            if $hints;
     $self->bitmask($bitmask)        if $bitmask;
     $self->hinthash($hinthash)      if $hinthash;
-    return $self;
+
+    return $self unless wantarray;
+    return (
+        $package, $filename, $line,
+        $subroutine, $hasargs, $wantarray, $evaltext,
+        $is_require, $hints, $bitmask, $hinthash
+    );
 }
 
 __PACKAGE__->meta->make_immutable;
