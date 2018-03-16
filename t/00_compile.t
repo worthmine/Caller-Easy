@@ -27,10 +27,10 @@ eval { $caller = ecaller(-1) };
 "fail to assign unvalid depth";
 
 eval { $caller = ecaller( 0, 1, 2 ) };
- like $@, qr/^Too many arguments!/i,                                    #11
+ like $@, qr/^Too many arguments for caller/i,                          #11
 "fail to assign too many arguments";
 eval { $caller = ecaller( 0, 1 ) };
- like $@, qr/^Unvalid arguments!/i,                                     #12
+ like $@, qr/^Unvalid arguments for caller/i,                           #12
 "fail to assign unvalid arguments";
 
 done_testing();
