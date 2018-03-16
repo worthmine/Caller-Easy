@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "less stress to remind returned list from CORE::caller()",
    "author" : [
       "Yuki Yoshida <worthmine@gmail.com>"
    ],

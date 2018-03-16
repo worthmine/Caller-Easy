@@ -120,15 +120,143 @@ __END__
 
 =head1 NAME
 
-Caller::Easy - It's new $module
+Caller::Easy - less stress to remind returned list from CORE::caller()
 
 =head1 SYNOPSIS
 
-    use Caller::Easy;
+ use Caller::Easy; # Module name is temporal
+
+ # the way up to now
+ sub foo {
+    my $subname = (caller(0))[3];
+ }
+
+ # with OO
+ sub foo {
+    my $subname = Caller::Easy->new(0)->subroutine();
+ }
+
+ # like a function imported
+ sub foo {
+    my $subname = caller(0)->subroutine();
+ }
+
+All the above will return 'main::foo'
+
+Now you can chiose the way you much prefer
 
 =head1 DESCRIPTION
 
-Caller::Easy is ...
+Caller::Easy is the easiest way for using functions of C<CORE::caller()>
+
+it produces the easier way to get some info from C<caller()> with no having to care about namespace.
+
+=head2 Constructor and initialization
+
+=head3 new()
+
+You can set no argument then it returns the object reference in scalar context.
+
+In list context, you can get just only ( $package, $filename, $line ).
+
+if you set depth(level) like C<new(1)>, you can get more info from caller
+( $package, $filename, $line, $subroutine, $hasargs, $wantarray, $evaltext,
+$is_require, $hints, $bitmask, $hinthash )
+directly with same term for CORE::caller().
+
+To be strictly, you can set C<depth> parameter like C<new( depth =E<gt> 1 )>
+but we can forget it, just set the natural number you want to set.
+
+=head2 Methods (All of them is read-only)
+
+=head3 caller()
+
+It is implemented to be alias of C<new()> but it doesn't matter.
+
+this method is imported to your packages automatically when you C<use Caller::Easy;>
+
+So you can use much freely this method like if there is no module imported.
+
+=head3 package()
+
+You can get package name instead of C<(caller(n))[0]>
+
+=head3 filename() (is read-only)
+
+You can get file name instead of C<(caller(n))[1]>
+
+=head3 line()
+
+You can get the line called instead of C<(caller(n))[2]>
+
+=head3 subroutine()
+
+You can get the name of subroutine instead of C<(caller(n))[3]>
+
+=head3 hasargs(), wantarray(), evaltext(), is_require(), hints(), bitmask(), hinthash()
+
+Please read L<CORE::caller|http://perldoc.perl.org/functions/caller.html>
+
+B<Don't ask me>
+
+=head3 args()
+
+You can get the arguments of targeted subroutine instead of C<@DB::args>
+
+This method is the B<unique> point of this module.
+
+=head3 depth()
+
+You can get what you set.
+
+=head1 TODO
+
+=over
+
+=item using Moose is a bottle-neck
+
+I made this module in a few days with Moose because it's the easiest way.
+It will be too heavy for some environments.
+
+To abolish Moose is a TODO if this module will be popular.
+
+=item rewite the tests
+
+I don't know well about L<CORE::caller|http://perldoc.perl.org/functions/caller.html>!
+
+Why I have written this module is
+Just only I can't remember what I wanna get with something number from caller()
+if there is no reference.
+
+So some of tests may not be appropriate.
+
+=item rewite the POD
+
+I know well that my english is aweful.
+
+=back
+
+=head1 SEE ALSO
+
+=over
+
+=item L<CORE::caller|http://perldoc.perl.org/functions/caller.html>
+
+If you are confused with this module, Please read this carefully.
+
+=item L<Perl6::Caller|http://search.cpan.org/~ovid/Perl6-Caller/lib/Perl6/Caller.pm>
+
+One of better implements for using something like this module.
+
+The reason why I reinvent the wheel is that this module has no github repository.
+
+=item L<Safe::Caller|https://github.com/stsc/Safe-Caller>
+
+The newest implement for using something like this module.
+
+It has github repository but usage is limited.
+
+=back
 
 =head1 LICENSE
 
@@ -142,4 +270,3 @@ it under the same terms as Perl itself.
 Yuki Yoshida E<lt>worthmine@gmail.comE<gt>
 
 =cut
-
