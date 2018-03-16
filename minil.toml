@@ -1,5 +1,5 @@
 name = "Caller-Easy"
-# badges = ["travis"]
+badges = ["travis"]
 authority="cpan:WORTHMINE"
 
 module_maker="ModuleBuildTiny"
