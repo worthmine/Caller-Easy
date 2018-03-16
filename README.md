@@ -23,7 +23,7 @@ Caller::Easy - less stress to remind returned list from CORE::caller()
 
 All the above will return 'main::foo'
 
-Now you can chiose the way you much prefer
+Now you can choise the way you much prefer
 
 # DESCRIPTION
 
@@ -42,7 +42,7 @@ In list context, you can get just only ( $package, $filename, $line ).
 if you set depth(level) like `new(1)`, you can get more info from caller
 ( $package, $filename, $line, $subroutine, $hasargs, $wantarray, $evaltext,
 $is\_require, $hints, $bitmask, $hinthash )
-directly with same term for CORE::caller().
+directly with same term for `CORE::caller()`
 
 To be strictly, you can set `depth` parameter like `new( depth => 1 )`
 but we can forget it, just set the natural number you want to set.
@@ -104,13 +104,17 @@ You can get what you set.
 
     Why I have written this module is
     Just only I can't remember what I wanna get with something number from caller()
-    if there is no reference.
+    without some reference.
 
     So some of tests may not be appropriate.
 
+- rename the module
+
+    I have to find the name that deserve it.
+
 - rewite the POD
 
-    I know well that my english is aweful.
+    I know well that my english is awful.
 
 # SEE ALSO
 
