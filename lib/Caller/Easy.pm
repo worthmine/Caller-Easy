@@ -3,10 +3,10 @@ use 5.008001;
 use strict;
 use warnings;
 use Carp;
-use Exporter 'import';
-our @EXPORT = qw/ecaller/;
 
 our $VERSION = "0.01";
+
+use overload '""' => sub{ $_[0]->package() }, fallback => 1;
 
 use Moose;
 
@@ -42,7 +42,6 @@ around BUILDARGS => sub {
 
 sub BUILD {
     my $self = shift;
-    croak 'you must use ecaller in some subroutine' unless (CORE::caller(1))[3];
     my $depth = $self->depth();
 
     my (
@@ -104,8 +103,14 @@ sub BUILD {
 __PACKAGE__->meta->make_immutable;
 no Moose;
 
-sub ecaller {
+sub caller {
     __PACKAGE__->new(@_);
+}
+
+sub import {
+    my $packagename = CORE::caller;
+    no strict 'refs';
+    *{"$packagename\::caller"} = \&caller;
 }
 
 1;

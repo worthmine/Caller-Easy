@@ -9,7 +9,7 @@ eval {
     my $i = 0;
     subtest "eval with block" => sub {
         plan tests => 11;
-        my $caller = ecaller($i);
+        my $caller = caller($i);
          is $caller->package(), __PACKAGE__,                            # 1
         'succeed to get package name';
         is $caller->filename(), $0, 'succeed to get filename';          # 2
@@ -38,7 +38,7 @@ eval q|
     my $i = 0;
     subtest "eval with text" => sub {
         plan tests => 11;
-        my $caller = ecaller($i);
+        my $caller = caller($i);
          is $caller->package(), __PACKAGE__,                            # 1
         'succeed to get package name';
          like $caller->filename(), qr/^\(eval \d{3}\)$/,                # 2

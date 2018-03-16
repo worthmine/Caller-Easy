@@ -12,7 +12,7 @@ sub Foo {
 
     subtest "For caller($i)" => sub {
         plan tests => 11;
-        my $caller = ecaller($i);
+        my $caller = caller($i);
          is $caller->package(), __PACKAGE__,                            # 1
         'succeed to get package name';
         is $caller->filename(), $0, 'succeed to get filename';          # 2
