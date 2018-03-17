@@ -62,7 +62,7 @@ So you can use much freely this method like if there is no module imported.
 
 You can get package name instead of `(caller(n))[0]`
 
-### filename() (is read-only)
+### filename()
 
 You can get file name instead of `(caller(n))[1]`
 
@@ -115,7 +115,7 @@ You can get what you set.
 
 - rewite the POD
 
-    I know well that my english is awful.
+    I know well that my English is awful.
 
 # SEE ALSO
 

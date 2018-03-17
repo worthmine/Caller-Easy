@@ -181,7 +181,7 @@ So you can use much freely this method like if there is no module imported.
 
 You can get package name instead of C<(caller(n))[0]>
 
-=head3 filename() (is read-only)
+=head3 filename()
 
 You can get file name instead of C<(caller(n))[1]>
 
@@ -236,7 +236,7 @@ I have to find the name that deserve it.
 
 =item rewite the POD
 
-I know well that my english is awful.
+I know well that my English is awful.
 
 =back
 
