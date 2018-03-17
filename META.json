@@ -64,7 +64,7 @@
          "web" : "https://github.com/worthmine/Caller-Easy"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_authority" : "cpan:WORTHMINE",
    "x_serialization_backend" : "JSON::PP version 2.93"
 }
