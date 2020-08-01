@@ -1,4 +1,4 @@
-requires 'perl', '5.8.9';
+requires 'perl', '5.008008';
 requires 'Moose';
 requires 'Module::Build::Tiny';
 

@@ -44,7 +44,7 @@
          "requires" : {
             "Module::Build::Tiny" : "0",
             "Moose" : "0",
-            "perl" : "v5.8.9"
+            "perl" : "5.008008"
          }
       },
       "test" : {

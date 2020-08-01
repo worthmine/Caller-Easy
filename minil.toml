@@ -4,4 +4,3 @@ authority = "cpan:WORTHMINE"
 license = "Perl_5"
 
 module_maker = "ModuleBuildTiny"
-
