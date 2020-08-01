@@ -270,6 +270,6 @@ it under the same terms as Perl itself.
 
 =head1 AUTHOR
 
-Yuki Yoshida E<lt>worthmine@gmail.comE<gt>
+L<Yuki Yoshida(worthmine)|https://github.com/worthmine>
 
 =cut

@@ -1,7 +1,7 @@
 {
    "abstract" : "less stress to remind returned list from CORE::caller()",
    "author" : [
-      "Yuki Yoshida <worthmine@gmail.com>"
+      "L<Yuki Yoshida(worthmine)|https://github.com/worthmine>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v3.1.10, CPAN::Meta::Converter version 2.150010",
@@ -66,6 +66,9 @@
    },
    "version" : "0.02",
    "x_authority" : "cpan:WORTHMINE",
+   "x_contributors" : [
+      "worthmine <worthmine@gmail.com>"
+   ],
    "x_serialization_backend" : "JSON::PP version 2.27400_02",
    "x_static_install" : 1
 }

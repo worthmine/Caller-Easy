@@ -144,4 +144,4 @@ it under the same terms as Perl itself.
 
 # AUTHOR
 
-Yuki Yoshida <worthmine@gmail.com>
+[Yuki Yoshida(worthmine)](https://github.com/worthmine)
