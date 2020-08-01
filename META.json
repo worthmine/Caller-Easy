@@ -42,7 +42,6 @@
       },
       "runtime" : {
          "requires" : {
-            "Module::Build::Tiny" : "0",
             "Moose" : "0",
             "perl" : "5.008008"
          }
