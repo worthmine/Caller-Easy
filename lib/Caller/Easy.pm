@@ -1,5 +1,5 @@
 package Caller::Easy;
-use 5.008008;
+use 5.014004;
 use strict;
 use warnings;
 use Carp;
