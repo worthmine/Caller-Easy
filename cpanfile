@@ -1,4 +1,4 @@
-requires 'perl', ' 5.014004';
+requires 'perl', '5.014004';
 requires 'Moose';
 
 on 'test' => sub {
