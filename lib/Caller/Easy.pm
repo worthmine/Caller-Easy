@@ -148,7 +148,16 @@ Now you can choise the way you much prefer
 
 Caller::Easy is the easiest way for using functions of C<CORE::caller()>
 
-it produces the easier way to get some info from C<caller()> with no having to care about namespace.
+it produces the easier way to get some info from C<caller()>
+with no having to care about namespace.
+
+=head1 ATTENTION
+
+We can NOT write like below:
+
+ my $subname = caller1->subroutine; # like (caller1)[3];
+
+This would be considered a Bareword.
 
 =head2 Constructor and initialization
 
@@ -253,9 +262,9 @@ One of better implements for using something like this module.
 
 The reason why I reinvent the wheel is that this module has no github repository.
 
-=item L<Safe::Caller|https://github.com/stsc/Safe-Caller>
+=item L<Safe::Caller|https://metacpan.org/pod/Safe::Caller>
 
-The newest implement for using something like this module.
+The newest implement for something like this module.
 
 It has github repository but usage is limited.
 
@@ -263,7 +272,7 @@ It has github repository but usage is limited.
 
 =head1 LICENSE
 
-Copyright (C) Yuki Yoshida.
+Copyright (C) Yuki Yoshida(worthmine).
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
