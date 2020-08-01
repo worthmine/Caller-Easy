@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/worthmine/Caller-Easy.svg?branch=master)](https://travis-ci.org/worthmine/Caller-Easy)
+[![Build Status](https://travis-ci.com/worthmine/Caller-Easy.svg?branch=master)](https://travis-ci.com/worthmine/Caller-Easy) [![MetaCPAN Release](https://badge.fury.io/pl/Caller-Easy.svg)](https://metacpan.org/release/Caller-Easy)
 # NAME
 
 Caller::Easy - less stress to remind returned list from CORE::caller()

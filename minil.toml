@@ -1,6 +1,7 @@
 name = "Caller-Easy"
-badges = ["travis"]
-authority="cpan:WORTHMINE"
+badges = ["travis-ci.com","metacpan"]
+authority = "cpan:WORTHMINE"
+license = "Perl_5"
 
-module_maker="ModuleBuildTiny"
+module_maker = "ModuleBuildTiny"
 
