@@ -99,6 +99,11 @@ This method is the **unique** point of this module.
 
 You can get what you set.
 
+# VERSIONS
+
+This module uses [package block syntax](https://metacpan.org/pod/release/JESSE/perl-5.14.0/pod/perldelta.pod#package-block-syntax).
+So it requires 5.14 or higher
+
 # TODO
 
 - using Moose is a bottle-neck

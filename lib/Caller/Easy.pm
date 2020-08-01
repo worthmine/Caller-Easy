@@ -217,6 +217,11 @@ This method is the B<unique> point of this module.
 
 You can get what you set.
 
+=head1 VERSIONS
+
+This module uses L<package block syntax|https://metacpan.org/pod/release/JESSE/perl-5.14.0/pod/perldelta.pod#package-block-syntax>.
+So it requires 5.14 or higher
+
 =head1 TODO
 
 =over
